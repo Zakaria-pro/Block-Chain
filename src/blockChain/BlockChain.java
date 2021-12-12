@@ -15,10 +15,6 @@ public class BlockChain {
 		blockchain.add(secondBlock);
 		blockchain.add(thirdBlock);
 		
-		
-		
-		
-		
 		String blockchainJson = StringUtil.getJson(blockchain);
 		
 		System.out.println("the number of blocks in the blockchain : "+blockchain.size());
