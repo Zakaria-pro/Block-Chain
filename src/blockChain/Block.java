@@ -13,69 +13,13 @@ public class Block {
 	
 	// Constructor
 	public Block(String data, String previousHash) {
-		
 		this.previousHash = previousHash;
 		this.data = data;
+		this.timeStamp = (new Timestamp(System.currentTimeMillis())).getTime();
 		
-		Timestamp timeStampMil = new Timestamp(System.currentTimeMillis());
-		this.timeStamp = timeStampMil.getTime();
-		
-		this.hash = calculatedHash();
-			
-		
-		
+		this.hash = StringUtil.applySha256( data + previousHash + timeStamp);
 		
 	}
-
-	
-	public String calculatedHash() {
-	
-		
-		String calculatedhash = StringUtil.applySha256( 
-				data + previousHash + timeStamp
-				);
-		
-		
-	
-		return calculatedhash;
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public String getHash() {
-		return hash;
-	}
-
-	
-
-	public void setHash(String hash) {
-		this.hash = hash;
-	}
-
-	public String getPreviousHash() {
-		return previousHash;
-	}
-
-	public void setPreviousHash(String previousHash) {
-		this.previousHash = previousHash;
-	}
-
-	public String getData() {
-		return data;
-	}
-
-	public void setData(String data) {
-		this.data = data;
-	}
-	
 	
 }
 
